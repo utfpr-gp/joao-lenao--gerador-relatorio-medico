@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WEB II</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!--Import Google Icon Font-->
+    <link
+      rel="stylesheet"
+      href="http://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/font-awesome/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@materializecss/materialize/dist/css/materialize.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="menu"></div>
+    <!-- intro -->
+    <div class="intro blue darken-1 z-depth-1">
+      <h1 class="grey-text text-lighten-5">
+        DESENVOLVIMENTO DE PÁGINAS WEB COM FRAMEWORK E CSS
+      </h1>
+      <h5 class="grey lighten-4 grey-text text-darken-1">
+        Prof. Dr. Roni Fabio Banaszewski
+      </h5>
+    </div>
+    <!-- intro -->
+
+    <div class="container about">
+      <div class="row">
+        <!-- primeira coluna -->
+        <div class="col s12">
+          <h4>Questão 1</h4>
+          <div class="card blue accent-4 back-cup-blue">
+            <div
+              class="card-content white-text flow-text my-panel-content container"
+            >
+              <a
+                href="pages/questao-1/questao-1.html"
+                class="white-text center"
+              >
+                <h3>Gerador de Relatório Médico</h3>
+              </a>
+              <div class="col s12 center">
+                <img src="/assets/resources/images/medico.jpg" height="200px" />
+              </div>
+              <div class="row">
+                <div class="col s12 center">
+                  <a
+                    class="waves-effect waves-light btn-large yellow darken-4"
+                    href="pages/questao-1/questao-1.html"
+                    >Ver</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- primeira coluna -->
+      </div>
+      <!-- fim linha -->
+    </div>
+    <!-- fim container -->
+
+    <div id="footer"></div>
+
+    <script src="assets/libraries/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/node_modules/@materializecss/materialize/dist/js/materialize.min.js"></script>
+    <script src="index.js"></script>
+
+    <script>
+      $(function () {
+        $('#footer').load('footer.html');
+        $('#menu').load('menu.html');
+      });
+    </script>
+  </body>
+</html>

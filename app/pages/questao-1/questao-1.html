@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WEB II</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!--Import Google Icon Font-->
+    <link
+      rel="stylesheet"
+      href="http://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/font-awesome/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@materializecss/materialize/dist/css/materialize.css"
+    />
+    <link rel="stylesheet" href="/app/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div id="menu"></div>
+    </header>
+
+    <!-- container -->
+    <main>
+      <div class="container about">
+        <h5 class="">Gerador de Relatório Médico</h5>
+        <h6>Legibilidade 100% garantida!</h6>
+        <hr />
+
+        <div class="row">
+          <div class="col s12 center">
+            <img src="/assets/resources/images/medico.jpg" height="200px" />
+          </div>
+          <div class="col s12">
+            <div class="flow-text my-panel-content">
+              Valdisney &eacute; m&eacute;dico em um hospital de Nova Iorque,
+              uma cidade do interior do Maranh&atilde;o. Neste hospital
+              tamb&eacute;m trabalha Jo&atilde;o Len&atilde;o, um m&eacute;dico
+              plantonista com ortografia praticamente ineleg&iacute;vel. Como os
+              relat&oacute;rios dos pacientes sempre s&atilde;o escritos
+              &agrave; m&atilde;o, Valdisney sempre tem problemas em ler os
+              relat&oacute;rios escritos por Jo&atilde;o Len&atilde;o. Nestes
+              dias, at&eacute; o pr&oacute;prio Jo&atilde;o Len&atilde;o relatou
+              problemas com a leitura de seus relat&oacute;rios. Neste sentido,
+              Valdisney pensou em criar um script para gerar o relat&oacute;rio
+              a partir de informa&ccedil;&otilde;es sobre o paciente inseridas
+              em um formul&aacute;rio. Por&eacute;m, ele n&atilde;o tem tanto
+              conhecimento de JavaScript e ultimamente est&aacute; muito
+              atarefado com as atividades do hospital e
+              interpreta&ccedil;&atilde;o dos relat&oacute;rios de Jo&atilde;o
+              Len&atilde;o. Desta forma, fa&ccedil;a uma boa a&ccedil;&atilde;o,
+              crie este script para Valdisney!
+              <p class="my-subtitle">Exig&ecirc;ncias:</p>
+              <ul class="browser-default">
+                <li>
+                  Definir uma <strong>classe Relatorio </strong> e uma
+                  <strong>classe Usuario </strong> e instanciar um objeto de
+                  cada classe para conter os dados inseridos no
+                  formul&aacute;rio.
+                  <strong
+                    >Os dados destes objetos precisam ser usados para imprimir o
+                    relat&oacute;rio</strong
+                  >
+                  formatado logo abaixo do formul&aacute;rio.
+                </li>
+
+                <li>
+                  O texto formatado com os valores do formul&aacute;rio devem
+                  ser apresentados dentro de um DIV.
+                  <ul class="browser-default">
+                    <li>
+                      Para apresenta&ccedil;&atilde;o, as datas precisam ser
+                      formatadas no formato DD/MM/YYYY dentro de uma
+                      <strong>fun&ccedil;&atilde;o com nome</strong> e usando
+                      <strong>String Template</strong>. Vale salientar que a
+                      data de nascimento &eacute; lida como string em JavaScript
+                      e deve ser manipulada como tal.
+                    </li>
+                    <li>
+                      Para apresenta&ccedil;&atilde;o dos sintomas, transformar
+                      os dados do vetor de sintomas em string (separando cada
+                      sintoma por v&iacute;rgula)
+                      <strong
+                        >via um m&eacute;todo nativo da classe Array</strong
+                      >.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            <h5>Escreva um relatório legível!</h5>
+          </div>
+
+          <form id="form-report" class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  placeholder="João de Sá Pato"
+                  id="input-name"
+                  type="text"
+                  class="validate"
+                />
+                <label for="input-name">Nome do paciente</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  placeholder="000.000.000-00"
+                  id="input-cpf"
+                  type="text"
+                  class="validate"
+                />
+                <label for="input-cpf">CPF</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input
+                  placeholder="00000-000"
+                  id="input-cep"
+                  type="text"
+                  class="validate"
+                />
+                <label for="input-cep">CEP</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <label for="">Gênero</label>
+                <p>
+                  <label for="input-gender-masculine">
+                    <input
+                      id="input-gender-masculine"
+                      name="gender-group"
+                      type="radio"
+                    />
+                    <span>Masculino</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input
+                      id="input-gender-feminine"
+                      name="gender-group"
+                      type="radio"
+                    />
+                    <span>Feminino</span>
+                  </label>
+                </p>
+              </div>
+            </div>
+            <!-- <div class="row">
+              <div class="input-field col s12">
+                <input
+                  min="2000-01-01"
+                  placeholder="14/10/2000"
+                  id="input-date"
+                  type="date"
+                />
+                <label for="input-date">Data de Nascimento</label>
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="input-field col s12">
+                <select id="select-insurance">
+                  <option value="" disabled selected>Escolha uma opção</option>
+                  <option value="DuoMed">DuoMed</option>
+                  <option value="AMilhão">AMilhão</option>
+                  <option value="VidaPrev">VidaPrev</option>
+                </select>
+                <label>Plano de Saúde</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <label for="">Sintomas</label>
+                <p>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="symptom-group"
+                      value="Dor de cabeça"
+                    />
+                    <span>Dor de cabeça</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" name="symptom-group" value="Febre" />
+                    <span>Febre</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input type="checkbox" name="symptom-group" value="Tosse" />
+                    <span>Tosse</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="symptom-group"
+                      value="Suores"
+                    />
+                    <span>Suores</span>
+                  </label>
+                </p>
+                <p>
+                  <label>
+                    <input
+                      type="checkbox"
+                      name="symptom-group"
+                      value="Cansaço"
+                    />
+                    <span>Cansaço</span>
+                  </label>
+                </p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col s12">
+                <button
+                  type="submit"
+                  class="btn waves-effect waves-light btn-large blue right"
+                >
+                  Enviar
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- fim-container-->
+      <div id="medical-report" class="row section grey lighten-4">
+        <div class="container col s12 about">
+          <div class="flow-text">
+            <h5>Relatório Médico para <span id="span-patient">NOME</span></h5>
+            <p>
+              <span id="span-genre">ELE|ELA</span> com
+              <span id="span-cpf">000.000.000-00</span> nasceu em
+              <span id="span-birthday">DD/MM/YYYY</span> (<span id="span-age"
+                >NUMERO</span
+              >
+              anos de idade) na cidade de
+              <span id="span-city">CIDADE</span> (obtida através do CEP
+              <span id="span-cep">00000-000</span> pela API ViaCEP) e tem o
+              plano de saúde <span id="span-insurance">NOME_DO_PLANO</span>.
+            </p>
+            <p>
+              Os seus sintomas incluem
+              <span id="span-symptoms">SINTOMA_1, SINTOMA_2</span>.
+            </p>
+            <p>
+              Consulta realizada em
+              <span id="span-now-date">DD/MM/YYYY</span> às
+              <span id="span-now-hour">mm:ss</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- fim container -->
+    <footer id="footer"></footer>
+    <script src="/assets/libraries/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/node_modules/@materializecss/materialize/dist/js/materialize.min.js"></script>
+    <script src="/app/index.js"></script>
+
+    <script>
+      $(function () {
+        $('#footer').load('/app/footer.html');
+        $('#menu').load('/app/menu.html');
+      });
+    </script>
+    <script type="module" src="questao-1.js"></script>
+  </body>
+</html>
