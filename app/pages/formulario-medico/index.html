@@ -20,6 +20,7 @@
       href="/node_modules/@materializecss/materialize/dist/css/materialize.css"
     />
     <link rel="stylesheet" href="/app/style.css" />
+    <link rel="stylesheet" href="medical-report.css" />
   </head>
 
   <body>
@@ -103,7 +104,7 @@
             <h5>Escreva um relatório legível!</h5>
           </div>
 
-          <form id="form-report" class="col s12">
+          <form id="report-form" class="col s12">
             <div class="row">
               <div class="input-field col s12">
                 <input
@@ -111,6 +112,7 @@
                   id="input-name"
                   type="text"
                   class="validate"
+                  autofocus
                 />
                 <label for="input-name">Nome do paciente</label>
               </div>
@@ -162,17 +164,18 @@
                 </p>
               </div>
             </div>
-            <!-- <div class="row">
+            <div class="row">
               <div class="input-field col s12">
                 <input
-                  min="2000-01-01"
+                  min="1900-01-01"
                   placeholder="14/10/2000"
                   id="input-date"
                   type="date"
+                  value="2000-01-01"
                 />
                 <label for="input-date">Data de Nascimento</label>
               </div>
-            </div> -->
+            </div>
             <div class="row">
               <div class="input-field col s12">
                 <select id="select-insurance">
@@ -233,12 +236,19 @@
             </div>
 
             <div class="row">
-              <div class="col s12">
+              <div class="col s12 right-align">
                 <button
                   type="submit"
-                  class="btn waves-effect waves-light btn-large blue right"
+                  class="btn waves-effect waves-light btn-large blue icon-right"
                 >
-                  Enviar
+                  Enviar<i class="material-icons right">send</i>
+                </button>
+                <button
+                  id="reset-button"
+                  type="button"
+                  class="btn outlined waves-effect waves-light btn-large"
+                >
+                  Limpar
                 </button>
               </div>
             </div>
@@ -252,24 +262,24 @@
           <div class="flow-text">
             <h5>Relatório Médico para <span id="span-patient">NOME</span></h5>
             <p>
-              <span id="span-genre">ELE|ELA</span> com
-              <span id="span-cpf">000.000.000-00</span> nasceu em
-              <span id="span-birthday">DD/MM/YYYY</span> (<span id="span-age"
-                >NUMERO</span
+              <span id="span-genre">{ELE|ELA}</span> com
+              <span id="span-cpf">{000.000.000-00}</span> nasceu em
+              <span id="span-birthday">{DD/MM/YYYY}</span> (<span id="span-age"
+                >{NUMERO}</span
               >
               anos de idade) na cidade de
-              <span id="span-city">CIDADE</span> (obtida através do CEP
-              <span id="span-cep">00000-000</span> pela API ViaCEP) e tem o
-              plano de saúde <span id="span-insurance">NOME_DO_PLANO</span>.
+              <span id="span-city">{CIDADE}</span> (obtida através do CEP
+              <span id="span-cep">{00000-000}</span> pela API ViaCEP) e tem o
+              plano de saúde <span id="span-insurance">{NOME_DO_PLANO}</span>.
             </p>
             <p>
               Os seus sintomas incluem
-              <span id="span-symptoms">SINTOMA_1, SINTOMA_2</span>.
+              <span id="span-symptoms">{SINTOMA_1, SINTOMA_2}</span>.
             </p>
             <p>
               Consulta realizada em
-              <span id="span-now-date">DD/MM/YYYY</span> às
-              <span id="span-now-hour">mm:ss</span>.
+              <span id="span-now-date">{DD/MM/YYYY}</span> às
+              <span id="span-now-hour">{hh:mm}</span>.
             </p>
           </div>
         </div>
@@ -287,6 +297,6 @@
         $('#menu').load('/app/menu.html');
       });
     </script>
-    <script type="module" src="questao-1.js"></script>
+    <script type="module" src="medical-report.js"></script>
   </body>
 </html>
