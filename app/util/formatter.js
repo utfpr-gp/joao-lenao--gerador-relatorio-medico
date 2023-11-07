@@ -14,6 +14,7 @@ function dateFormatter(date) {
  */
 function dateToStringFormatter(date) {
   // Divide o valor em ano, mês e dia
+  //2023-05-23
   let [year, month, day] = date.split('-');
 
   // Formate a data no formato "DD/MM/AAAA"
