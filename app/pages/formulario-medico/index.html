@@ -161,6 +161,7 @@
                       id="input-gender-masculine"
                       name="gender-group"
                       type="radio"
+                      required
                     />
                     <span>Masculino</span>
                   </label>
@@ -188,6 +189,7 @@
                   id="input-date"
                   type="date"
                   value="2000-01-01"
+                  required
                 />
                 <label for="input-date">Data de Nascimento*</label>
                 <span class="error-text" id="date-error">Data inválida</span>
@@ -320,17 +322,11 @@
     </main>
     <!-- fim container -->
     <footer id="footer"></footer>
+
     <script src="/assets/libraries/jquery/jquery-2.2.4.min.js"></script>
     <script src="/node_modules/@materializecss/materialize/dist/js/materialize.min.js"></script>
     <script src="/node_modules/alertifyjs/build/alertify.js"></script>
     <script src="/app/index.js"></script>
-
-    <script>
-      $(function () {
-        $('#footer').load('/app/footer.html');
-        $('#menu').load('/app/menu.html');
-      });
-    </script>
     <script type="module" src="medical-report.js"></script>
   </body>
 </html>
