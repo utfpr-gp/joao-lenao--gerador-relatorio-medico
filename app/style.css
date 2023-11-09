@@ -30,7 +30,7 @@ html {
 }
 
 .my-logo {
-  height: 64px;
+  height: 60px;
 }
 
 .my-header {
@@ -63,7 +63,7 @@ html {
 
 @media (max-width: 600px) {
   .my-logo {
-    height: 64px;
+    height: 54px;
   }
   #utfpr-footer {
     margin: auto;
@@ -141,23 +141,9 @@ main {
   padding-top: 13%;
   padding-bottom: 13%;
   margin-bottom: 50px;
-  background-image: url('/assets/resources/images/background.png');
+  background-image: url("/assets/resources/images/background.png");
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.back-cup {
-  text-align: center;
-  background-image: url('../images/cup-background.jpg');
-  background-repeat: repeat;
-  background-size: auto;
-}
-
-.back-cup-blue {
-  text-align: center;
-  background-image: url('../images/cup-background-blue.jpg');
-  background-repeat: repeat;
-  background-size: auto;
 }
 
 .intro h1 {

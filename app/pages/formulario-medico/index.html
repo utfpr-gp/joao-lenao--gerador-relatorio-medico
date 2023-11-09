@@ -19,6 +19,10 @@
       rel="stylesheet"
       href="/node_modules/@materializecss/materialize/dist/css/materialize.css"
     />
+    <link
+      rel="stylesheet"
+      href="/node_modules/alertifyjs/build/css/alertify.css"
+    />
     <link rel="stylesheet" href="/app/style.css" />
     <link rel="stylesheet" href="medical-report.css" />
   </head>
@@ -108,46 +112,56 @@
             <div class="row">
               <div class="input-field col s12">
                 <input
+                  pattern="^(\s?[A-ZÀ-Ú][a-zà-ú]*)+(\s[a-zà-ú]*)?(\s[A-ZÀ-Ú][a-zà-ú]*)+"
                   placeholder="João de Sá Pato"
                   id="input-name"
                   type="text"
                   class="validate"
                   autofocus
+                  required
                 />
-                <label for="input-name">Nome do paciente</label>
+                <label for="input-name">Nome do paciente*</label>
+                <span class="error-text" id="name-error">Nome inválido</span>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <input
+                  pattern="^\d{3}\.\d{3}\.\d{3}-\d{2}$"
                   placeholder="000.000.000-00"
                   id="input-cpf"
                   type="text"
                   class="validate"
+                  required
                 />
-                <label for="input-cpf">CPF</label>
+                <label for="input-cpf">CPF*</label>
+                <span class="error-text" id="cpf-error">CPF inválido</span>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
                 <input
+                  pattern="^\d{5}-\d{3}$"
                   placeholder="00000-000"
                   id="input-cep"
                   type="text"
                   class="validate"
+                  required
                 />
-                <label for="input-cep">CEP</label>
+                <label for="input-cep">CEP*</label>
+                <span class="error-text" id="cep-error">CEP inválido</span>
               </div>
             </div>
             <div class="row">
               <div class="col s12">
-                <label for="">Gênero</label>
+                <label for="">Gênero*</label>
                 <p>
                   <label for="input-gender-masculine">
                     <input
                       id="input-gender-masculine"
                       name="gender-group"
                       type="radio"
+                      required
                     />
                     <span>Masculino</span>
                   </label>
@@ -162,6 +176,9 @@
                     <span>Feminino</span>
                   </label>
                 </p>
+                <span class="error-text" id="gender-error"
+                  >O campo é obrigatório.</span
+                >
               </div>
             </div>
             <div class="row">
@@ -172,24 +189,29 @@
                   id="input-date"
                   type="date"
                   value="2000-01-01"
+                  required
                 />
-                <label for="input-date">Data de Nascimento</label>
+                <label for="input-date">Data de Nascimento*</label>
+                <span class="error-text" id="date-error">Data inválida</span>
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <select id="select-insurance">
+                <select id="select-insurance" required>
                   <option value="" disabled selected>Escolha uma opção</option>
                   <option value="DuoMed">DuoMed</option>
                   <option value="AMilhão">AMilhão</option>
                   <option value="VidaPrev">VidaPrev</option>
                 </select>
-                <label>Plano de Saúde</label>
+                <label>Plano de Saúde*</label>
+                <span class="error-text" id="insurance-error"
+                  >Plano de Saúde é obrigatório</span
+                >
               </div>
             </div>
             <div class="row">
               <div class="col s12">
-                <label for="">Sintomas</label>
+                <label for="">Sintomas*</label>
                 <p>
                   <label>
                     <input
@@ -232,12 +254,16 @@
                     <span>Cansaço</span>
                   </label>
                 </p>
+                <span class="error-text" id="symptom-error"
+                  >É preciso marcar pelo menos um dos sintomas</span
+                >
               </div>
             </div>
 
             <div class="row">
               <div class="col s12 right-align">
                 <button
+                  id="submit-button"
                   type="submit"
                   class="btn waves-effect waves-light btn-large blue icon-right"
                 >
@@ -255,48 +281,52 @@
           </form>
         </div>
       </div>
-
       <!-- fim-container-->
-      <div id="medical-report" class="row section grey lighten-4">
-        <div class="container col s12 about">
-          <div class="flow-text">
-            <h5>Relatório Médico para <span id="span-patient">NOME</span></h5>
-            <p>
-              <span id="span-genre">{ELE|ELA}</span> com
-              <span id="span-cpf">{000.000.000-00}</span> nasceu em
-              <span id="span-birthday">{DD/MM/YYYY}</span> (<span id="span-age"
-                >{NUMERO}</span
-              >
-              anos de idade) na cidade de
-              <span id="span-city">{CIDADE}</span> (obtida através do CEP
-              <span id="span-cep">{00000-000}</span> pela API ViaCEP) e tem o
-              plano de saúde <span id="span-insurance">{NOME_DO_PLANO}</span>.
-            </p>
-            <p>
-              Os seus sintomas incluem
-              <span id="span-symptoms">{SINTOMA_1, SINTOMA_2}</span>.
-            </p>
-            <p>
-              Consulta realizada em
-              <span id="span-now-date">{DD/MM/YYYY}</span> às
-              <span id="span-now-hour">{hh:mm}</span>.
-            </p>
+      <!-- modal -->
+      <div id="medical-report-modal" class="modal">
+        <div id="medical-report" class="row section modal-content">
+          <div class="col s12 about">
+            <h4>Relatório Médico para <span id="span-patient">NOME</span></h4>
+            <div class="flow-text">
+              <p>
+                <span id="span-genre">{ELE|ELA}</span> com
+                <span id="span-cpf">{000.000.000-00}</span> nasceu em
+                <span id="span-birthday">{DD/MM/YYYY}</span> (<span
+                  id="span-age"
+                  >{NUMERO}</span
+                >
+                anos de idade) na cidade de
+                <span id="span-city">{CIDADE}</span> (obtida através do CEP
+                <span id="span-cep">{00000-000}</span> pela API ViaCEP) e tem o
+                plano de saúde <span id="span-insurance">{NOME_DO_PLANO}</span>.
+              </p>
+              <p>
+                Os seus sintomas incluem
+                <span id="span-symptoms">{SINTOMA_1, SINTOMA_2}</span>.
+              </p>
+              <p>
+                Consulta realizada em
+                <span id="span-now-date">{DD/MM/YYYY}</span> às
+                <span id="span-now-hour">{hh:mm}</span>.
+              </p>
+            </div>
           </div>
         </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+            >Fechar</a
+          >
+        </div>
       </div>
+      <!-- fim-modal -->
     </main>
     <!-- fim container -->
     <footer id="footer"></footer>
+
     <script src="/assets/libraries/jquery/jquery-2.2.4.min.js"></script>
     <script src="/node_modules/@materializecss/materialize/dist/js/materialize.min.js"></script>
+    <script src="/node_modules/alertifyjs/build/alertify.js"></script>
     <script src="/app/index.js"></script>
-
-    <script>
-      $(function () {
-        $('#footer').load('/app/footer.html');
-        $('#menu').load('/app/menu.html');
-      });
-    </script>
     <script type="module" src="medical-report.js"></script>
   </body>
 </html>
