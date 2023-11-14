@@ -1,0 +1,39 @@
+.card-container {
+  height: 300px; /* Defina a altura desejada para todos os cards */
+  display: flex;
+  align-items: stretch;
+}
+
+.card.white {
+  display: flex;
+  flex-direction: column;
+  min-height: 400px;
+  height: 100%;
+}
+
+.card-image {
+  position: relative;
+  overflow: hidden;
+  flex: 1; /* Faz a imagem ocupar 100% da altura da div */
+}
+
+.my-card-image {
+  width: 100%; /* Faz a imagem ocupar 100% da largura da div */
+  height: 100%; /* Faz a imagem ocupar 100% da altura da div */
+  object-fit: cover; /* Mantém a proporção da imagem, cobrindo a área especificada */
+}
+
+#report-list {
+  gap: 10px;
+}
+
+/* Não há resultados */
+.no-result {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.no-result-icon {
+  font-size: 8rem;
+  margin-bottom: 1rem;
+}

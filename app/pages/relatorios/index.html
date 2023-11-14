@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>WEB II</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <!--Import Google Icon Font-->
+    <link
+      rel="stylesheet"
+      href="http://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/font-awesome/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@materializecss/materialize/dist/css/materialize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="/node_modules/alertifyjs/build/css/alertify.css"
+    />
+    <link rel="stylesheet" href="/app/style.css" />
+    <link rel="stylesheet" href="skeleton.css" />
+    <link rel="stylesheet" href="reports.css" />
+  </head>
+  <body>
+    <header>
+      <div id="menu"></div>
+    </header>
+
+    <main style="margin-bottom: 20px">
+      <div class="container">
+        <h1 class="center-align">Relatórios</h1>
+        <div id="no-result" class="no-result" style="display: none">
+          <i class="material-icons no-result-icon"
+            >sentiment_very_dissatisfied</i
+          >
+          <p>Não há resultados disponíveis.</p>
+        </div>
+        <div id="report-container" style="display: none">
+          <div class="row" id="report-list">
+            <div class="col s12 m6 l4" id="card-model">
+              <div class="card white">
+                <div class="card-image">
+                  <img
+                    src="https://doodleipsum.com/300/avatar-3"
+                    class="my-card-image"
+                    height="300px"
+                  />
+                  <div
+                    class="activator waves-effect waves-light"
+                    style="
+                      position: absolute;
+                      top: 0;
+                      bottom: 0;
+                      right: 0;
+                      left: 0;
+                    "
+                  ></div>
+                </div>
+
+                <div class="card-content">
+                  <span class="card-title activator"
+                    ><span id="name-span" class="truncate">João de Sá Pato</span
+                    ><i class="material-icons right">more_vert</i></span
+                  >
+                  <p>
+                    Relatório criado em
+                    <span id="date-created-span">01/02/2000</span>
+                  </p>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title"
+                    ><i class="material-icons right">close</i
+                    ><span id="name-secondary-span">João de Sá Pato</span></span
+                  >
+
+                  <ul class="collection" style="margin-top: 40px">
+                    <li class="collection-item">
+                      <strong>CPF:</strong
+                      ><span id="cpf-span">000.000.000-00</span>
+                    </li>
+                    <li class="collection-item">
+                      <strong>Gênero:</strong
+                      ><span id="gender-span">Masculino</span>
+                    </li>
+                    <li class="collection-item">
+                      <strong>Data de Nascimento:</strong
+                      ><span id="birthday-span">20/11/2011</span>
+                    </li>
+                    <li class="collection-item">
+                      <strong>Plano de Saúde:</strong
+                      ><span id="insurance-span">X</span>
+                    </li>
+                    <li class="collection-item">
+                      <strong>CEP:</strong><span id="cep-span">00000-000</span>
+                    </li>
+                    <li class="collection-item">
+                      <strong>Cidade:</strong><span id="city-span">X</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="report-container-skeleton">
+          <div class="row" style="gap: 10px">
+            <div class="col s12 m6 l4" id="card-model">
+              <div class="skeleton-card">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-content">
+                  <div class="skeleton-title"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m6 l4" id="card-model">
+              <div class="skeleton-card">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-content">
+                  <div class="skeleton-title"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col s12 m6 l4" id="card-model">
+              <div class="skeleton-card">
+                <div class="skeleton-image"></div>
+                <div class="skeleton-content">
+                  <div class="skeleton-title"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                  <div class="skeleton-text"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer id="footer"></footer>
+
+    <script src="/assets/libraries/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/node_modules/@materializecss/materialize/dist/js/materialize.min.js"></script>
+    <script src="/node_modules/alertifyjs/build/alertify.js"></script>
+    <script src="/app/index.js"></script>
+    <script type="module" src="reports.js"></script>
+  </body>
+</html>
