@@ -7,6 +7,7 @@ import {
 
 import { Gender } from '../../model/gender.js';
 import { Report } from '../../model/report.js';
+import { ReportService } from '../../service/report.service.js';
 import { User } from '../../model/user.js';
 import { UserService } from '../../service/user.service.js';
 
@@ -39,7 +40,7 @@ import { UserService } from '../../service/user.service.js';
   // });
 
   //Habilita ou desabilita o botão de envio com base nas mudanças no formulário.
-  //enableSubmitButtonOnFormChange();
+  enableSubmitButtonOnFormChange();
 
   /**
    * Trata do evento de submissão do formulário
@@ -63,6 +64,9 @@ import { UserService } from '../../service/user.service.js';
 
     // Cria uma instância da classe Report com os dados do usuário e sintomas
     let report = new Report(user, symptoms);
+
+    //salva um relatório no armazenamento local
+    saveReportLocal(report);
 
     //solicita a impressão das informações na tela
     updateTextWithReportInfo(report);
@@ -110,6 +114,18 @@ import { UserService } from '../../service/user.service.js';
 
     // Cria e retorna uma instância da classe User com os dados coletados
     return new User(name, cpf, cep, gender, birthday, insurance);
+  }
+
+  /**
+   * Salva um relatório no armazenamento local
+   * @param {*} report
+   */
+  function saveReportLocal(report) {
+    // Cria uma instância do serviço de relatórios
+    const reportService = new ReportService();
+
+    // Salva o relatório no armazenamento local via serviço
+    reportService.saveLocal(report);
   }
 
   /**

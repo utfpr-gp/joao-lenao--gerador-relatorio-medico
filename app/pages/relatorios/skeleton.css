@@ -1,0 +1,29 @@
+.skeleton-card {
+  background-color: #f0f0f0; /* Cor de fundo do esqueleto */
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 200px; /* Altura aproximada da imagem do esqueleto */
+  background-color: #ccc; /* Cor de fundo da imagem do esqueleto */
+}
+
+.skeleton-content {
+  padding: 16px;
+}
+
+.skeleton-title {
+  width: 70%;
+  height: 20px;
+  margin-bottom: 10px;
+  background-color: #ccc; /* Cor de fundo do título do esqueleto */
+}
+
+.skeleton-text {
+  width: 50%;
+  height: 16px;
+  background-color: #ccc; /* Cor de fundo do texto do esqueleto */
+}
