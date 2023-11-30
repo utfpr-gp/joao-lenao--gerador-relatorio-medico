@@ -2,14 +2,53 @@ export class UserService {
   constructor() {}
 
   /**
-   * Função assíncrona que busca a cidade com base em um CEP fornecido, fazendo uma solicitação à API do ViaCEP.
+   * Método assíncrono que busca a cidade com base em um CEP fornecido, fazendo uma solicitação à API do ViaCEP.
    * @param {string} cep - O CEP a partir do qual a cidade será obtida.
    * @returns {Promise<string>} Uma promessa que resolve com o nome da cidade obtido do CEP.
    */
   async getCityFromCep(cep) {
-    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-    const data = await response.json();
-    return data.localidade;
+    try {
+      // Faz uma solicitação à API do ViaCEP usando o Fetch API
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+
+      // Converte a resposta de JSON para objeto
+      const data = await response.json();
+
+      // Retorna o nome da cidade obtido do CEP
+      return data.localidade;
+    } catch (error) {
+      // Captura e trata erros durante a requisição
+      console.error('Falha ao retornar a cidade:', error);
+      throw error; // Propaga o erro para quem chamou a função
+    }
+  }
+
+  /**
+   * Método que busca a cidade com base em um CEP fornecido, fazendo uma solicitação à API do ViaCEP.
+   * @param {string} cep - O CEP a partir do qual a cidade será obtida.
+   * @returns {Promise<string>} Uma promessa que resolve com o nome da cidade obtido do CEP.
+   */
+  fetchCityFromCep(cep) {
+    // Faz uma solicitação à API do ViaCEP usando o Fetch API
+    return fetch(`https://viacep.com.br/ws/${cep}/json/`)
+      .then((response) => {
+        // Verifica se a requisição foi bem-sucedida
+        if (!response.ok) {
+          throw new Error(`Erro na requisição: ${response.statusText}`);
+        }
+
+        // Converte a resposta de JSON para objeto
+        return response.json();
+      })
+      .then((data) => {
+        // Retorna o nome da cidade obtido do CEP
+        return data.localidade;
+      })
+      .catch(function (err) {
+        // Captura e trata erros durante a requisição
+        console.error('Falha ao retornar a cidade', err);
+        throw err; // Propaga o erro para quem chamou a função
+      });
   }
 
   /**

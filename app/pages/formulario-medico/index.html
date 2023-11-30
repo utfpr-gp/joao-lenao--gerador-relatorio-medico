@@ -279,13 +279,21 @@
               </div>
             </div>
           </form>
+
+          <div class="col s12">
+            <div class="success-message">Cadastro realizado com sucesso!</div>
+          </div>
         </div>
       </div>
       <!-- fim-container-->
+
       <!-- modal -->
       <div id="medical-report-modal" class="modal">
-        <div id="medical-report" class="row section modal-content">
-          <div class="col s12 about">
+        <div
+          id="medical-report"
+          class="row section modal-content center-align medical-report-text"
+        >
+          <div class="col s12 m8 offset-m2 about">
             <h4>Relatório Médico para <span id="span-patient">NOME</span></h4>
             <div class="flow-text">
               <p>
@@ -323,7 +331,8 @@
     <!-- fim container -->
     <footer id="footer"></footer>
 
-    <script src="/assets/libraries/jquery/jquery-2.2.4.min.js"></script>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/node_modules/jquery-mask-plugin/dist/jquery.mask.min.js"></script>
     <script src="/node_modules/@materializecss/materialize/dist/js/materialize.min.js"></script>
     <script src="/node_modules/alertifyjs/build/alertify.js"></script>
     <script src="/app/index.js"></script>
