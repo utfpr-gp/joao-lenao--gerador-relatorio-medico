@@ -20,6 +20,12 @@ import { UserService } from '../../service/user.service.js';
       document.getElementById('report-form').reset();
     });
 
+  //Adiciona máscara aos inputs com JQuery Mask Plugin
+  $(function () {
+    $('#input-cpf').mask('000.000.000-00', { reverse: false });
+    $('#input-cep').mask('00000-000');
+  });
+
   /**
    * Validação antecipada realizada antes da submissão do formulário.
    */
@@ -71,11 +77,15 @@ import { UserService } from '../../service/user.service.js';
     //solicita a impressão das informações na tela
     updateTextWithReportInfo(report);
 
-    //mostra o modal com o relatório
-    let modal = M.Modal.getInstance(
-      document.getElementById('medical-report-modal')
-    );
-    modal.open();
+    // Exibe a mensagem de sucesso com efeito jQuery
+    $('.success-message').slideDown(3000, function () {
+      //mostra o modal com o relatório
+      let modal = M.Modal.getInstance(
+        document.getElementById('medical-report-modal')
+      );
+      modal.open();
+      $('.medical-report-text').fadeIn(3000);
+    });
   };
 
   /**
@@ -157,10 +167,19 @@ import { UserService } from '../../service/user.service.js';
     // TODO: Habilitar para explicar requisições assíncronas
     // Atualiza o campo Cidade no formulário usando requisição assíncrona
     // async function updateCity() {
-    //   const city = await userService.getCityFromCep();
+    //   const city = await userService.getCityFromCep(user.cep);
     //   document.querySelector('#span-city').textContent = city;
     // }
     // updateCity(); // Chama a função para buscar a cidade
+
+    userService
+      .fetchCityFromCep(user.cep)
+      .then((city) => {
+        document.querySelector('#span-city').textContent = city;
+      })
+      .catch((error) => {
+        alertify.error('Não foi possível buscar a cidade pelo CEP.');
+      });
 
     // Atualiza o campo Gênero no formulário
     document.querySelector('#span-genre').textContent =

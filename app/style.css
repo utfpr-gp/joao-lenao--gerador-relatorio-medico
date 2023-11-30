@@ -3,47 +3,8 @@ html {
   background-color: #ededed !important;
 }
 
-@font-face {
-  font-family: Dusha;
-  src: url(../fonts/dusha.ttf);
-}
-
-.russia {
-  font-family: Dusha;
-}
-
-.flag-size {
-  height: 40px;
-  width: 40px;
-}
-
-.my-placar {
-  color: red;
-  font-size: 4em;
-}
-
-.my-placar-x {
-  color: blue;
-  font-size: 4em;
-  padding-left: 1em;
-  padding-right: 1em;
-}
-
 .my-logo {
   height: 60px;
-}
-
-.my-header {
-  padding: 1em 0em;
-  font-weight: 600;
-}
-
-.my-content-header {
-  font-weight: 600;
-}
-
-.my-wrapper-select {
-  margin-bottom: 2em;
 }
 
 .my-subtitle {
@@ -54,11 +15,6 @@ html {
 
 .my-panel-content {
   text-align: justify;
-}
-
-.my-center {
-  display: block;
-  margin: auto;
 }
 
 @media (max-width: 600px) {
@@ -141,7 +97,7 @@ main {
   padding-top: 13%;
   padding-bottom: 13%;
   margin-bottom: 50px;
-  background-image: url("/assets/resources/images/background.png");
+  background-image: url('/assets/resources/images/background.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -185,11 +141,6 @@ main {
   margin-bottom: 45px;
 }
 
-.contact .contact-holder {
-  padding-left: 40px;
-  text-align: left;
-}
-
 .contact .contact-holder h6 {
   margin-bottom: 15px;
   text-align: left;
@@ -201,4 +152,14 @@ main {
 
 footer {
   padding-top: 0px;
+}
+
+.success-message {
+  display: none;
+  background-color: rgba(0, 255, 0, 0.3);
+  text-align: center;
+  padding: 25px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
 }

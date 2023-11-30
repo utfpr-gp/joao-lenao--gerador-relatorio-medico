@@ -33,13 +33,6 @@ input:valid ~ .error-text {
   display: none;
 }
 
-/* form:valid button[type='submit'] {
-  pointer-events: auto; Permite eventos de clique quando válido
-  cursor: pointer; Altera o cursor para indicar que é clicável
-} */
-
-/* form:invalid button[type='submit'] {
-  pointer-events: none; Desabilita eventos de clique quando inválido
-  cursor: not-allowed; Altera o cursor para indicar que não é clicável
-  background-color: #dedede !important;
-} */
+.medical-report-text {
+  display: none;
+}
